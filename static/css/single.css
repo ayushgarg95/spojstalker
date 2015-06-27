@@ -1,0 +1,25 @@
+#username{
+	font-style: italic;
+	color: red;
+}
+.mini{
+	width: 40%;
+	border-collapse: collapse;
+}
+thead th a{
+	color: red;
+}
+#cla_sec{
+	width: 50%;
+	float: right;
+}
+.short_hr_cla{
+	width: 85%;
+}
+#classical{
+	width: 100%;
+}
+#classical_container{
+	overflow: scroll;
+	height: 400px;
+}

@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<!--
+	Tessellate by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Results for {{main.user_name}} | Spoj Profile Scrapper By Ayush Garg</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/static/assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<script type='text/javascript'>
+	$.tablesorter.addParser({ 
+        id: 'classical', 
+        is: function(s) { 
+            return false; 
+        }, 
+        format: function(s) { 
+            return s.toLowerCase().replace(/ days ago/,''); 
+        }, 
+        type: 'numeric' 
+    }); 
+	$(document).ready(function (){
+		$('#classical').tablesorter({
+			headers: {
+				1: {
+					sorter: 'classical'
+				}
+			}
+		});
+	});
+	$(document).ready(function() {
+		$('#lang_info').tablesorter();
+	});
+</script>
+	</head>
+	<body>
+
+		<!-- Header -->
+			<section id="header" class="dark">
+				<div class="container">
+					
+					<span class="image"><img src="/static/images/spoj.jpeg" alt="" /></span>
+					
+				</div>
+				<header>
+					<h1>Stalking {{ main.name }}, eh ? </h1>
+				</header>
+				<footer>
+					<div class="container 75%">
+						<div class="row 50%">
+							<div class="6u 12u(mobile)"><a href="#first" class="button scrolly">User Stats</a></div>
+							<div class="6u 12u(mobile)"><a href="#list_problems" class="button scrolly">Latest Submissions</a></div>
+						</div>
+					</div>
+				</footer>
+				<br>
+				<h1><a href="../../">Welcome to Spoj Profile Scrapper</a></h1>
+				<br>
+				<div class="container">
+				<table><tr><td><iframe src="http://ghbtns.com/github-btn.html?user=ayushgarg95&repo=spojprofilescrapper&type=star&count=true&size=large" height="30" width="170" frameborder="0" scrolling="0" style="width:170px; height: 30px;" allowTransparency="true"></iframe></td><td><iframe src="http://ghbtns.com/github-btn.html?user=ayushgarg95&repo=spojprofilescrapper&type=fork&count=true&size=large" height="30" width="170" frameborder="0" scrolling="0" style="width:170px; height: 30px;" allowTransparency="true"></iframe></td><td><iframe src="http://ghbtns.com/github-btn.html?user=ayushgarg95&type=follow&count=true&size=large" height="30" width="240" frameborder="0" scrolling="0" style="width:240px; height: 30px;" allowTransparency="true"></iframe></td></tr></table>
+				</div>
+			</section>
+
+
+		<!-- Basic Elements -->
+		
+			<section id="first" class="main">
+				<header>
+					<div class="container">
+						<h2>Spoj User <a id="username" href="http://www.spoj.com/users/{{ main.user_name }}">{{ main.user_name }}</a></h2>
+					</div>
+				</header>
+				<div class="content style1 dark">
+					<div class="container">
+						<section id="user_stats">
+							<header>
+								<h3>User Stats</h3>
+							</header>
+							<blockquote>
+							<table id='basic_info'>
+<tbody>
+	<tr>
+		<td>Name</td>
+		<td>{{ main.name }}</td>
+	</tr>
+	<tr>
+		<td>World Rank</td>
+		<td>{{ main.rank }}</td>
+	</tr>
+	<tr>
+		<td>Points</td>
+		<td>{{ main.points }}</td>
+	</tr>
+	<tr>
+		<td>Problems Solved</td>
+		<td>{{ main.probPool.total_solved }}</td>
+	</tr>
+	<tr>
+		<td>Classical Problems Solved</td>
+		<td>{{ main.classical_total }}</td>
+	</tr>
+</tbody>
+</table>
+							</blockquote>
+						</section>
+						<hr />
+						<section id="submission_stats">
+							<header>
+								<h3>Submission Stats</h3>
+							</header>
+							<blockquote>
+							<table id='sub_status_info'>
+<tbody>
+	<tr>
+		<td>Total</td>
+		<td>{{ main.submission.total }}</td>
+	</tr>
+{% for key, value in main.submission.main.items %}
+	<tr>
+		<td>{{ key }}</td>
+		<td>	{{ value }}</td>
+	</tr>
+{% endfor %}
+</tbody>
+</table>
+<table id='sub_misc_info'>
+<tbody>
+	<tr>
+		<td>Average no. of Attempts to solve</td>
+		<td>{{ main.probPool.avg_attempt }}</td>
+	</tr>
+	<tr>
+		<td>First Attempt Accepted</td>
+		<td>{{ main.probPool.first_attempt }}</td>
+	</tr>
+	<tr>
+		<td>Most number of Attempts</td>
+		<td>{{ main.probPool.most_attempt }} (<a href='http://www.spoj.com/problems/{{ main.probPool.most_attempt_ques }}/'>{{ main.probPool.most_attempt_ques }}</a>)</td>
+	</tr>
+	<tr>
+		<td>Latest Problem Solved</td>
+		<td><a href='http://www.spoj.com/problems/{{ main.probPool.latest }}/'>{{ main.probPool.latest }}</a></td>
+	</tr>
+	<tr>
+		<td>Average per day</td>
+		<td>{{ main.probPool.avg_day }}</td>
+	</tr>
+	<tr>
+		<td>Most in a day</td>
+		<td>{{ main.probPool.most_day }} ({{ main.probPool.most_day_val }})</td>
+	</tr>
+	<tr>
+		<td>Most in a Month</td>
+		<td>{{ main.probPool.most_month }} ({{ main.probPool.most_month_val }})</td>
+	</tr>
+</tbody>
+</table>
+							</blockquote>
+						</section>
+						<hr />
+						<section id="lang_stats">
+							<header>
+								<h3>Language Stats</h3>
+							</header>
+							<blockquote>
+							<table id='lang_info'>
+<tbody>
+	<tr>
+		<th>Language ID</th>
+		<th>Submissions</th>
+	</tr>
+{% for key, value in main.lang.main.items %}
+	<tr>
+		<td>{{ key }}</td>
+		<td>{{ value }}</td>
+	</tr>
+{% endfor %}
+</tbody>
+</table>
+							</blockquote>
+						</section>
+						<hr />
+						<section id="list_problems">
+							<header>
+								<h3>Latest Problems Solved</h3>
+							</header>
+							<div class="table-wrapper">
+								<table class="default">
+									<thead>
+										<tr>
+											<th>Problem ID</th>
+											<th>Name</th>
+											<th>Points on AC</th>
+											<th>Result</th>
+											<th>Solved On</th>
+										</tr>
+									</thead>
+									<tbody>
+									{% for key, value in main.latest_date.items %}
+										<tr>
+											<td><a href='http://www.spoj.com/problems/{{ value.0 }}/'>{{ value.0 }}</a></td>
+											<td><a href='http://www.spoj.com/problems/{{ value.0 }}/'>{{ value.1 }}</a></td>
+											<td>{{ value.2 }}</td>
+											<td>{{ value.3 }}</td>
+											<td>{{ value.4 }}</td>
+										</tr>
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</section>
+						<!--
+						<section id="list_problems">
+							<header>
+								<h3>List of Classical Problems Solved</h3>
+							</header>
+							<div class="table-wrapper">
+								<table class="default">
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th>Solved On</th>
+											<th>Points Gained</th>
+										</tr>
+									</thead>
+									<tbody>
+									{% for key, value in main.classical_table.items %}
+										<tr>
+											<td><a href='http://www.spoj.com/problems/{{ key }}/'>{{ key }}</a></td>
+											<td>{{ value.0 }} days ago</td>
+											<td>{{ value.1 }}</td>
+										</tr>
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</section>
+						-->
+					</div>
+				</div>
+			</section>
+		
+
+		<!-- Fourth -->
+			<section id="fourth" class="main">
+				<header>
+					<div class="container">
+						<h2>Feedback Form</h2>
+						<p>Feel free to shoot a mail to with your query and or suggestion using this form. You can also ask me any query in competetive coding (though I'm not an expert! )</p>
+					</div>
+				</header>
+				<div class="content style4 featured">
+					<div class="container 75%">
+						<form method="post" action="">
+							<div class="row 50%">
+								<div class="6u 12u(mobile)"><input type="text" name="f_name" placeholder="Name" /></div>
+								<div class="6u 12u(mobile)"><input type="text" name="f_email" placeholder="Email" /></div>
+							</div>
+							<div class="row 50%">
+								<div class="12u"><textarea name="f_message" placeholder="Message"></textarea></div>
+							</div>
+							<div class="row">
+								<div class="12u">
+									<ul class="actions">
+										<li><a onclick="location.href='/submit'" ><input type="button" class="button" value="Send Message" /></a></li>
+										<li><input type="reset" class="button alt" value="Clear Form" /></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<section id="footer">
+				<ul class="icons">
+					<li><a href="http://www.twitter.com/nsitayush" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="http://www.facebook.com/sync.complete" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					<li><a href="http://www.instagram.com/ayushgarg95" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+					<li><a href="https://github.com/ayushgarg95" class="icon fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+				<div class="copyright">
+					<ul class="menu">
+						<li>&copy; Ayush Garg. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+					<ul class="menu">
+					<li><style type="text/css">#counter_196369 {font-family: "Verdana"; font-size: 11px; clear: left; color: #BBBBBB;}  #counter_196369 a {color: #BBBBBB;}#counter_div_196369 {height: 20px}</style><div id="counter_div_196369"></div><p id="counter_196369"><span></span> <a target="_blank" href="http://aaronaxelsson.se">Hit Counter</a> <span></span></p><script type="text/javascript" src="http://hit-counter-download.com/66cccc/196369"></script></li>
+					</ul>
+				</div>
+				
+			</section>
+
+		<!-- Scripts -->
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="static/assets/js/skel.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="static/assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="static/assets/js/main.js"></script>
+
+	</body>
+</html>

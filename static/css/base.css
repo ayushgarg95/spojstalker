@@ -1,0 +1,63 @@
+h1 {
+	color: white;
+	font-style: italic;
+	color: green;
+}
+h1 a{
+	color: white;
+	font-style: italic;
+	color: green;
+}
+hr {
+	width: 40%;
+	text-align: left;
+	margin-left: 0;
+	color: green;
+}
+body {
+	/*background-image: url('../img/bg.jpg');*/
+	background-color: #000000;
+}
+#credit{
+	text-align: right;
+	width: 40%;
+	color: white;
+	font-style: italic;
+	margin-bottom: 0px;
+	margin-top: -35px;
+}
+#content{
+	width: 70%;
+	margin-left:  auto;
+	margin-right: auto;
+	margin-top: 100px;
+	background-color:  	#C0C0C0;
+	border-radius: 10px;
+	padding: 25px 27px 25px 27px;
+}
+#botbar{
+	margin-top: 20px;
+	border-radius: 10px;
+	padding: 25px 27px 25px 27px;	
+}
+.normal_link{
+	text-decoration: none;
+}
+#topbar{
+	background-color: rgba(0,0,0,0.9);
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	z-index: 10;
+}
+.fb-like{
+	z-index: 100;
+	position: fixed;
+	float: right;
+	top: 0px;
+}
+#frameContain{
+	width: 100%;
+	text-align: center;
+}

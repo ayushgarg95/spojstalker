@@ -1,0 +1,27 @@
+.better{
+	color: green;
+}
+.notbetter{
+	color: red;
+}
+.username{
+	font-style: italic;
+	color: red;
+}
+
+.mini{
+	width: 70%;
+	border-collapse: collapse;
+}
+.classical_container{
+	overflow: scroll;
+	height: 300px;
+}
+#sub_container{
+	overflow: scroll;
+	height: 300px;
+}
+.user_name{
+	color: blue;
+	font-style: italic;
+}
